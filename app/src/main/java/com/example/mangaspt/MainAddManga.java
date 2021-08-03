@@ -18,7 +18,7 @@ public class MainAddManga extends AppCompatActivity {
 
     ImageView capa;
 
-    MangasProvider.DBHelper DB;
+    DBHelper DB;
 
     EditText addmanga_txt, editmanga_txt, deletemanga_txt;
 
@@ -33,7 +33,7 @@ public class MainAddManga extends AppCompatActivity {
         editmanga_txt = findViewById(R.id.add_descricao_manga);
         deletemanga_txt = findViewById(R.id.add_capitulo_manga);
 
-        DB = new MangasProvider.DBHelper(this);
+        DB = new DBHelper(this);
 
         adicionar = findViewById(R.id.btn_add_manga);
 

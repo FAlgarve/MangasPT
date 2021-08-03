@@ -36,7 +36,7 @@ public class MangasDAO {
                 mangas.setTitulo(c.getString(c.getColumnIndex("titulo")));
                 mangas.setDescricao(c.getString(c.getColumnIndex("descricao")));
                 mangas.setCapitulos(c.getString(c.getColumnIndex("capitulos")));
-                mangas.setCapa((byte) c.getInt(c.getColumnIndex("capa")));
+                //mangas.setCapa((byte) c.getInt(c.getColumnIndex("capa")));
 
                 mangas_list.add(mangas);
             } while (c.moveToNext());
