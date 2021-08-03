@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainDeleteUser"
+    android:background="@drawable/backgound">
+
+
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="12dp"
+        android:src="@drawable/ic_open_book" />
+
+
+    <TextView
+        android:id="@+id/settings_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ufonts_com_sui_generis_light"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_marginTop="90dp"/>
+
+
+</RelativeLayout>

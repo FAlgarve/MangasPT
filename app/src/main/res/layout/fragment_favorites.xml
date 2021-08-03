@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/backgound">
+
+    <RelativeLayout
+        android:id="@+id/top_menu"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_open_book"
+            android:layout_marginTop="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <ImageView
+            android:src="@drawable/ic_baseline_search_24"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="0dp"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/manga_fav_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_menu"
+        android:layout_marginTop="15dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

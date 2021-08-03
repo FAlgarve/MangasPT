@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarActivity"
+    android:background="@drawable/backgound">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/user_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="100dp"
+        app:cardBackgroundColor="@color/cardview_dark_background"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_person_24"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/user_edit_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="50dp"
+        app:endIconMode="clear_text"
+        android:textColorHint="@color/Text_grey_color"
+        android:hint="Username"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="10dp"
+        app:boxStrokeColor="@android:color/holo_blue_dark"
+        app:endIconTint="@android:color/holo_blue_dark"
+        app:hintTextColor="@android:color/holo_blue_dark"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/Text_grey_color" />
+
+    <EditText
+        android:id="@+id/user_edit_pass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="50dp"
+        app:endIconMode="password_toggle"
+        android:textColorHint="@color/Text_grey_color"
+        android:hint="Password"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="10dp"
+        app:boxStrokeColor="@android:color/holo_blue_dark"
+        app:endIconTint="@android:color/holo_blue_dark"
+        app:hintTextColor="@android:color/holo_blue_dark"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/Text_grey_color"/>
+
+    <EditText
+        android:id="@+id/user_edit_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="50dp"
+        app:endIconMode="clear_text"
+        android:textColorHint="@color/Text_grey_color"
+        android:hint="Email"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawablePadding="10dp"
+        app:boxStrokeColor="@android:color/holo_blue_dark"
+        app:endIconTint="@android:color/holo_blue_dark"
+        app:hintTextColor="@android:color/holo_blue_dark"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/Text_grey_color"/>
+
+    <EditText
+        android:id="@+id/user_edit_telem"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="50dp"
+        app:endIconMode="clear_text"
+        android:textColorHint="@color/Text_grey_color"
+        android:hint="Telem"
+        android:drawableStart="@drawable/ic_baseline_phone_android_24"
+        android:drawablePadding="10dp"
+        app:boxStrokeColor="@android:color/holo_blue_dark"
+        app:endIconTint="@android:color/holo_blue_dark"
+        app:hintTextColor="@android:color/holo_blue_dark"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/Text_grey_color"/>
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="680dp"
+        android:layout_marginLeft="130dp"
+        android:width="150dp"
+        android:height="80dp"
+        android:fontFamily="@font/ufonts_com_sui_generis_light"
+        android:text="EDIT "
+        android:textSize="26dp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
