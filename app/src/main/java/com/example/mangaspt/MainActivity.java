@@ -1,7 +1,11 @@
 package com.example.mangaspt;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.audiofx.BassBoost;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MainRegistarActivity.class);
             startActivity(intent);
         });
+
+        MediaPlayer player = MediaPlayer.create(this, Uri.parse("https://youtu.be/sd1GmeOIs2I"));
+        player.setLooping(true);
+        player.start();
 
     }
 }

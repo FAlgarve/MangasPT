@@ -2,26 +2,106 @@ package com.example.mangaspt;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
+import android.provider.BaseColumns;
 
-public class DBHelper extends SQLiteOpenHelper {
+import static com.example.mangaspt.MangasProvider.BASECONTENTURI;
+
+public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
+
     public static final String DBNAME = "Mangas_PT";
+    public static final String TABLE_NAME_USERS= "users";
+    public static final String TABLE_NAME_MANGAS= "mangas";
+
+
+    public static final String PATH = "mangas";
+    public static final Uri CONTENTURI = BASECONTENTURI.buildUpon().appendPath(PATH).build();
+    public static String AUTHORITY = "com.istec.turmaB";
+    public static final int MANGAS=0;
+    public static final int MANGA=1;
+    public static final int USERS = 3;
+    public static final int USER = 4;
+    public static UriMatcher uriMatcher;
+    static {
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(AUTHORITY, MangasProvider.MangasContrato.PATH, MANGAS);
+        uriMatcher.addURI(AUTHORITY, DBHelper.MangasContrato.PATH + "/#", MANGA);
+        uriMatcher.addURI(AUTHORITY, DBHelper.UserContrato.PATH, USERS);
+        uriMatcher.addURI(AUTHORITY, DBHelper.UserContrato.PATH + "/#", USER);
+    }
+
+    public static class MangasContrato implements BaseColumns {
+        public static final String PATH = "mangas";
+        public static final Uri CONTENTURI = BASECONTENTURI.buildUpon().appendPath(PATH).build();
+        public static final String TABLENAME = "mangas";
+        public static final String COL_1 = "id";
+        public static final String COL_2 = "titulo";
+        public static final String COL_3 = "descricao";
+        public static final String COL_4 = "capitulos";
+
+        public static String CriarTabela() {
+
+            String mysql = "CREATE TABLE " + TABLENAME + " (";
+            mysql += COL_1 + " INTEGER  PRIMARY KEY AUTOINCREMENT, ";
+            mysql += COL_2 + " VARCHAR  (80),";
+            mysql += COL_3 + " VARCHAR  (180),";
+            mysql += COL_4 + " INTEGER );";
+
+            return mysql;
+        }
+
+        public static String EliminarTabela() {
+            String mysql = "DROP TABLE IF EXISTS" + TABLENAME + ";";
+            return mysql;
+        }
+
+    }
+    public static class UserContrato implements BaseColumns {
+        public static final String PATH = "users";
+        public static final Uri CONTENTURI = BASECONTENTURI.buildUpon().appendPath(PATH).build();
+        public static final String TABLENAME = "users";
+        public static final String COL_1 = "id";
+        public static final String COL_2 = "username";
+        public static final String COL_3 = "password";
+        public static final String COL_4 = "email";
+        public static final String COL_5 = "telem";
+
+        public static String CriarTabela() {
+
+            String mysql = "CREATE TABLE " + TABLENAME + " (";
+            mysql += COL_1 + " INTEGER  PRIMARY KEY AUTOINCREMENT, ";
+            mysql += COL_2 + " VARCHAR  (80),";
+            mysql += COL_3 + " VARCHAR  (80),";
+            mysql += COL_4 + " VARCHAR  (80),";
+            mysql += COL_5 + " INTEGER ); ";
+
+            return mysql;
+        }
+
+        public static String EliminarTabela() {
+            String mysql = "DROP TABLE IF EXISTS" + TABLENAME + ";";
+            return mysql;
+        }
+    }
 
     public DBHelper(Context context) {
         super(context, DBNAME, null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
     }
-
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table users(id integer primary key, username TEXT, password TEXT, email TEXT, telem integer)");
-        DB.execSQL("create Table mangas(id integer primary key, titulo TEXT, descricao TEXT, capitulos integer)");
+        DB.execSQL(DBHelper.UserContrato.CriarTabela());
+        DB.execSQL(DBHelper.MangasContrato.CriarTabela());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
-        MyDB.execSQL("drop Table if exists users");
+        MyDB.execSQL(DBHelper.UserContrato.EliminarTabela());
+        MyDB.execSQL(DBHelper.MangasContrato.EliminarTabela());
     }
 
     public Boolean insertUsers(String username, String password, String email, String telem) {

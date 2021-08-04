@@ -15,29 +15,29 @@ import android.provider.BaseColumns;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class AnimesProvider extends ContentProvider {
-    public static final String DATABASENAME = "Animes.db";
+public class MangasProvider extends ContentProvider {
+    public static final String DATABASENAME = "Mangas_PT";
 
-    public static String AUTHORITY = "com.example.mangaspt";
+    public static String AUTHORITY = "com.istec.turmaB";
     public static final Uri BASECONTENTURI = Uri.parse("content://" + AUTHORITY);
 
-    public static final int ANIMES = 0;
-    public static final int ANIME = 1;
+    public static final int MANGAS = 0;
+    public static final int MANGA = 1;
 
     public static UriMatcher uriMatcher;
 
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(AUTHORITY, AnimesContrato.PATH, ANIMES);
-        uriMatcher.addURI(AUTHORITY, AnimesContrato.PATH + "/#", ANIME);
+        uriMatcher.addURI(AUTHORITY, MangasContrato.PATH, MANGAS);
+        uriMatcher.addURI(AUTHORITY, MangasContrato.PATH + "/#", MANGA);
 
     }
 
-    public static class AnimesContrato implements BaseColumns {
+    public static class MangasContrato implements BaseColumns {
 
-        public static final String PATH = "animes";
+        public static final String PATH = "mangas";
         public static Uri CONTENTURI = BASECONTENTURI.buildUpon().appendPath(PATH).build();
-        public static final String TABLENAME = "animes";
+        public static final String TABLENAME = "mangas";
         public static final String COL_1 = "_ID";
         public static final String COL_2 = "titulo";
         public static final String COL_3 = "descricao";
@@ -66,12 +66,12 @@ public class AnimesProvider extends ContentProvider {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL(AnimesContrato.CriarTabela());
+            db.execSQL(MangasContrato.CriarTabela());
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL(AnimesContrato.EliminarTabela());
+            db.execSQL(MangasContrato.EliminarTabela());
             onCreate(db);
         }
     }
@@ -92,15 +92,15 @@ public class AnimesProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         Cursor cur = null;
         switch (uriMatcher.match(uri)) {
-            case ANIMES:
-                cur = db.query(AnimesContrato.TABLENAME, null, null, null, null, null, null);
+            case MANGAS:
+                cur = db.query(MangasContrato.TABLENAME, null, null, null, null, null, null);
                 cur.setNotificationUri(getContext().getContentResolver(), uri);
                 return cur;
 
-            case ANIME:
+            case MANGA:
                 SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
                 long id = ContentUris.parseId(uri);
-                qb.appendWhere(AnimesContrato.COL_1 + "=" + id);
+                qb.appendWhere(MangasContrato.COL_1 + "=" + id);
                 cur = qb.query(db, null, null, null, null, null, null);
                 cur.setNotificationUri(getContext().getContentResolver(), uri);
                 return cur;
@@ -120,8 +120,8 @@ public class AnimesProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues cv) {
         switch (uriMatcher.match(uri)) {
-            case ANIMES:
-                long novo = db.insert(AnimesContrato.TABLENAME, null, cv);
+            case MANGAS:
+                long novo = db.insert(MangasContrato.TABLENAME, null, cv);
                 Uri _uri = ContentUris.withAppendedId(uri, novo);
                 getContext().getContentResolver().notifyChange(_uri, null);
                 return _uri;
@@ -133,8 +133,8 @@ public class AnimesProvider extends ContentProvider {
     @Override
     public int delete(@NonNull Uri uri, @Nullable String where, @Nullable String[] whereArgs) {
         switch (uriMatcher.match(uri)) {
-            case ANIMES:
-                int total = db.delete(AnimesContrato.TABLENAME, where, whereArgs);
+            case MANGAS:
+                int total = db.delete(MangasContrato.TABLENAME, where, whereArgs);
                 if (total > 0){
                     getContext().getContentResolver().notifyChange(uri, null);
                 }
@@ -147,8 +147,8 @@ public class AnimesProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues cv, @Nullable String where, @Nullable String[] whereArgs) {
         switch (uriMatcher.match(uri)) {
-            case ANIMES:
-                int total = db.update(AnimesContrato.TABLENAME, cv, where, whereArgs);
+            case MANGAS:
+                int total = db.update(MangasContrato.TABLENAME, cv, where, whereArgs);
                 if (total > 0){
                     getContext().getContentResolver().notifyChange(uri, null);
                 }
