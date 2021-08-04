@@ -15,10 +15,10 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public static final String DBNAME = "Mangas_PT";
     public static final String TABLE_NAME_USERS= "users";
-    public static final String TABLE_NAME_MANGAS= "mangas";
+    public static final String TABLE_NAME_MANGAS= "manga";
 
 
-    public static final String PATH = "mangas";
+    public static final String PATH = "manga";
     public static final Uri CONTENTURI = BASECONTENTURI.buildUpon().appendPath(PATH).build();
     public static String AUTHORITY = "com.istec.turmaB";
     public static final int MANGAS=0;
@@ -35,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
     }
 
     public static class MangasContrato implements BaseColumns {
-        public static final String PATH = "mangas";
+        public static final String PATH = "manga";
         public static final Uri CONTENTURI = BASECONTENTURI.buildUpon().appendPath(PATH).build();
         public static final String TABLENAME = "mangas";
         public static final String COL_1 = "id";
@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
 
         public static String CriarTabela() {
 
-            String mysql = "CREATE TABLE " + TABLENAME + " (";
+            String mysql = "CREATE TABLE " + TABLE_NAME_MANGAS + " (";
             mysql += COL_1 + " INTEGER  PRIMARY KEY AUTOINCREMENT, ";
             mysql += COL_2 + " VARCHAR  (80),";
             mysql += COL_3 + " VARCHAR  (180),";
@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
         }
 
         public static String EliminarTabela() {
-            String mysql = "DROP TABLE IF EXISTS" + TABLENAME + ";";
+            String mysql = "DROP TABLE IF EXISTS" + TABLE_NAME_MANGAS + ";";
             return mysql;
         }
 
@@ -72,7 +72,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
 
         public static String CriarTabela() {
 
-            String mysql = "CREATE TABLE " + TABLENAME + " (";
+            String mysql = "CREATE TABLE " + TABLE_NAME_USERS + " (";
             mysql += COL_1 + " INTEGER  PRIMARY KEY AUTOINCREMENT, ";
             mysql += COL_2 + " VARCHAR  (80),";
             mysql += COL_3 + " VARCHAR  (80),";
@@ -83,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
         }
 
         public static String EliminarTabela() {
-            String mysql = "DROP TABLE IF EXISTS" + TABLENAME + ";";
+            String mysql = "DROP TABLE IF EXISTS" + TABLE_NAME_USERS + ";";
             return mysql;
         }
     }
