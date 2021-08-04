@@ -70,9 +70,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        MediaPlayer player = MediaPlayer.create(this, Uri.parse("https://youtu.be/sd1GmeOIs2I"));
+        MediaPlayer player = MediaPlayer.create(this, R.raw.music);
         player.setLooping(true);
         player.start();
-
     }
 }
